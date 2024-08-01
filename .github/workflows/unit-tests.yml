@@ -15,4 +15,4 @@ jobs:
           go-version: ${{ matrix.go-version }}
 
       - name: Display Go version
-        run: go test -v ./... count=1
+        run: go test -v ./...
