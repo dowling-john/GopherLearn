@@ -1,4 +1,4 @@
-name: Unit Testing
+name: Unit Test Coverage
 on: [push]
 jobs:
   run-test-coverage:
