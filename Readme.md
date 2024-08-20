@@ -3,6 +3,12 @@ Gopher Learn
 
 This repo is purely for me to learn neural networks and how they work, if it helps you or you find it useful then brilliant
 
+```
+    ToDo: Look at gpu acceleration
+    Gpu acceleration package https://github.com/gorgonia/cu
+
+```
+
 
 Initializing the Neural Network
 -------------------------------

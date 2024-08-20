@@ -1,4 +1,4 @@
-package neural_network
+package neuron
 
 import (
 	"GopherLearn/gopher_learn/activation"

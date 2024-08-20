@@ -13,3 +13,12 @@ func Sum(x []float64) (sum float64) {
 	}
 	return
 }
+
+
+func Avg(x [][]float64) []float64 {
+	return nil
+}
+
+func AdjustValueByLearningRate(value, errorDelta, learningRate float64) float64 {
+	return value - (learningRate * errorDelta)
+}

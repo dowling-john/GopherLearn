@@ -1,14 +1,20 @@
 package loss
 
 import (
-	m "GopherLearn/math"
-	"math"
+	"GopherLearn/math"
+	math2 "math"
 )
 
-func MeanSquaredError(forcast []float64, actual []float64) float64 {
+type MeanSquaredError struct{}
+
+func (m *MeanSquaredError) GetDerivative(input, target float64) float64 {
+	return 2 * (input - target)
+}
+
+func (m *MeanSquaredError) GetLoss(forecast []float64, actual []float64) float64 {
 	var x []float64
-	for i, e := range forcast {
+	for i, e := range forecast {
 		x = append(x, actual[i]-e)
 	}
-	return float64(1) / float64(len(forcast)) * math.Pow(m.Sum(x), 2)
+	return float64(1) / float64(len(forecast)) * math2.Pow(math.Sum(x), 2)
 }
