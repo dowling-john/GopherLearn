@@ -7,6 +7,8 @@ import (
 	"GopherLearn/gopher_learn/neural_network"
 	"GopherLearn/gopher_learn/optimizers"
 	"fmt"
+	"github.com/kr/pretty"
+	"encoding/json"
 )
 
 var (
@@ -36,7 +38,15 @@ func main() {
 		LossFunction: &loss.MeanSquaredError{},
 	}
 
+	j, err := json.Marshal(network) 
+	if err != nil {
+		fmt.Printf("%v", err)
+	}
+	pretty.Printf("%v", j)
+
 	if err := o.Optimize(network, xorProblem, xorActuals); err != nil {
 		fmt.Println(err)
 	}
+
+
 }

@@ -1,10 +1,12 @@
 package neural_network
 
-import "GopherLearn/gopher_learn/layers"
+import (
+	"GopherLearn/gopher_learn/layers"
+)
 
 type NeuralNetwork struct {
 	Layers       []layers.Layer         			`json:"layers"`
-	LossFunction func(float64, float64) float64 	`json:"loss_function"`
+	LossFunction func(float64, float64) float64 	`json:"-"`
 }
 
 func (n *NeuralNetwork) Forward(inputs []float64) []float64 {

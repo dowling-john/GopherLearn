@@ -5,7 +5,7 @@ import (
 	"GopherLearn/gopher_learn/neural_network"
 	"GopherLearn/gopher_learn/math"
 	"fmt"
-	"github.com/kr/pretty"
+	//"github.com/kr/pretty"
 )
 
 type SGD struct {
@@ -69,8 +69,34 @@ func (s *SGD) processBatches(inputValues, inputTargets [][]float64, network *neu
 		}
 		errorAverages = append(errorAverages, math.Avg(d))
 	}
+
+	//Use the error values to optimize the network
+
+	//loop through layers in reverse order
+	for layer := len(network.Layers)-1; layer >= 0; layer-- {
+		fmt.Printf("Layer: %v", layer)
+		// Update the neurons induvidually 
+		for neuronIndex, neuron := range network.Layers[layer].GetNeurons() {
+			if layer == len(network.Layers)-1 {
+				// Get the derivative of the activation function
+				neuronActivationDerivative := neuron.Activation.GetDerivative(errorAverages[neuronIndex])
+				for j, weight := range neuron.Weights {
+					gradientForweight := neuronActivationDerivative * outputMatrix[0][layer-1][j]
+					fmt.Printf("old weight -> : %v", neuron.Weights[j])
+					neuron.Weights[j] = weight - s.LearningRate * gradientForweight
+					fmt.Printf("new weight -> : %v", neuron.Weights[j])
+
+				}
+				// Update the bias
+				gradientForBias := neuronActivationDerivative * outputMatrix[0][layer-1][neuronIndex]
+				fmt.Printf("old bias -> : %v", neuron.Bias)
+				neuron.Bias = neuron.Bias - s.LearningRate * gradientForBias
+				fmt.Printf("new bias -> : %v", neuron.Bias)
+				continue
+			}
+		}
 	
-	fmt.Printf("%# v", pretty.Formatter(outputMatrix))
-	fmt.Printf("%# v", pretty.Formatter(errorDeltas))
-	fmt.Printf("%# v", pretty.Formatter(errorAverages))
+	
+	}
+
 }
