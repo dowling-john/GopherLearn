@@ -14,9 +14,11 @@ func Sum(x []float64) (sum float64) {
 	return
 }
 
-
-func Avg(x [][]float64) []float64 {
-	return nil
+func Avg(x []float64) (sum float64) {
+	for _, l := range x {
+		sum += l
+	}
+	return sum / float64(len(x))
 }
 
 func AdjustValueByLearningRate(value, errorDelta, learningRate float64) float64 {

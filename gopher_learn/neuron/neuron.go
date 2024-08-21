@@ -2,7 +2,7 @@ package neuron
 
 import (
 	"GopherLearn/gopher_learn/activation"
-	"GopherLearn/math"
+	"GopherLearn/gopher_learn/math"
 	"math/rand"
 )
 

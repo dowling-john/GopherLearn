@@ -13,3 +13,7 @@ func (n *NeuralNetwork) Forward(inputs []float64) []float64 {
 	}
 	return inputs
 }
+
+func (n * NeuralNetwork) GetOuputLayer() layers.Layer {
+	return n.Layers[len(n.Layers)-1]
+}

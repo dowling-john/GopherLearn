@@ -25,3 +25,7 @@ func (f *FullyConnectedLayer) Forward(inputs []float64) (NeuronOutputs []float64
 	}
 	return NeuronOutputs
 }
+
+func (f *FullyConnectedLayer) GetNeurons() []*neuron.Neuron {
+	return f.Neurons
+}

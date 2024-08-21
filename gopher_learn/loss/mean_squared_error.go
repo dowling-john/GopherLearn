@@ -1,7 +1,7 @@
 package loss
 
 import (
-	"GopherLearn/math"
+	"GopherLearn/gopher_learn/math"
 	math2 "math"
 )
 
